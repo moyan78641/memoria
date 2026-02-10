@@ -1,0 +1,19 @@
+name = "memoria"
+main = "src/entry-cf.ts"
+compatibility_date = "2025-02-10"
+
+# 前端静态文件（构建时从 memorial-hub-web 复制过来）
+[assets]
+directory = "dist"
+binding = "ASSETS"
+not_found_handling = "single-page-application"
+
+# D1 数据库
+[[d1_databases]]
+binding = "DB"
+database_name = "memorial-hub-db"
+database_id = "fdac2506-8d29-49f9-ab08-33afcc74e45b"  # wrangler d1 create memorial-hub-db 后替换
+
+# 定时任务：北京时间 00:00 = UTC 16:00
+[triggers]
+crons = ["0 16 * * *"]

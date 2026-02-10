@@ -1,0 +1,22 @@
+{
+  "name": "memoria",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "wrangler dev",
+    "build:web": "cd web && pnpm install && pnpm build",
+    "deploy": "wrangler d1 migrations apply DB --remote && wrangler deploy",
+    "db:create": "wrangler d1 create memorial-hub-db",
+    "db:migrate": "wrangler d1 execute memorial-hub-db --remote --file=./migrations/0001_init.sql",
+    "db:migrate:local": "wrangler d1 execute memorial-hub-db --local --file=./migrations/0001_init.sql"
+  },
+  "dependencies": {
+    "hono": "^4.7.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250204.0",
+    "wrangler": "^4.0.0",
+    "typescript": "^5.7.0",
+    "@types/node": "^22.0.0"
+  }
+}
